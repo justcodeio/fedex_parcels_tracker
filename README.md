@@ -38,7 +38,7 @@ Fedex::Parcel.configure do |c|
   c.method = :pobierz_statusy_przesylki
   c.tracking_in_data = :numerPrzesylki
   c.data = {
-    kodDostepu: @access_key,
+    kodDostepu: c.access_key,
     numerPrzesylki: nil,
     czyOstatni: 0
   }
