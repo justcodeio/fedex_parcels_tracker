@@ -34,6 +34,7 @@ module Fedex
     end
 
     def self.track(tracking_code)
+      raise 'No initializer credentials provided !' if Fedex::Parcel.configuration.blank?
       raise 'Tracking code cannot be blank' if tracking_code.blank?
       raise 'Invalid tracking code provided' unless (12..14).cover? tracking_code.length
 

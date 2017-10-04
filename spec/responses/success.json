@@ -1,0 +1,11 @@
+{
+  "statusy_przesylki":
+  [
+    {"nr_p":"1111111111111", "data_s":"datetime", "skrot":"XX", "opis":"Kurier doręczył przesyłkę do odbiorcy.",
+       "odd_symbol":"XXX", "podpis_odbiorcy":"XXXXXXX"},
+    {"nr_p":"1111111111111", "data_s":"datetime", "skrot":"XX", "opis":"Przesyłka wydana do doręczenia kurierowi FedEx.", "odd_symbol":"XXX"},
+    {"nr_p":"1111111111111", "data_s":"datetime", "skrot":"XX", "opis":"Przesyłka w oddziale FedEx.", "odd_symbol":"XXX"},
+    {"nr_p":"1111111111111", "data_s":"datetime", "skrot":"XXX", "opis":"Przesyłka w oddziale FedEx.", "odd_symbol":"XXX"},
+    {"nr_p":"1111111111111", "data_s":"datetime", "skrot":"XXX", "opis":"Przesyłka w oddziale FedEx.", "odd_symbol":"XXX"}
+  ],"@xmlns:ns2":"http://xxxxxxxxxxx.com/"
+}
