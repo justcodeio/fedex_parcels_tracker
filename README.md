@@ -6,6 +6,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
+gem 'savon', '~> 2.11.1'
 gem 'fedex_parcels_tracker'
 ```
 
