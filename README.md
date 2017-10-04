@@ -17,9 +17,9 @@ Or install it yourself as:
 
     $ gem install fedex_parcels_tracker
 
-When bundled set up a initializer to provide CLIENT CREDENTIALS
+When bundled, set up a initializer to provide CLIENT CREDENTIALS
 
-Simply create a fedex_tracker.rb file in the initializers directory and set it up like this:
+Simply create a fedex_tracker.rb file in the initializers directory, and set it up like this:
 
 ```ruby
 Fedex::Parcel.configure do |c|
