@@ -6,7 +6,6 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'savon', '~> 2.11.1'
 gem 'fedex_parcels_tracker'
 ```
 
@@ -93,7 +92,7 @@ Fedex::Parcel.track('22222222222222')
 ```
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/fedex_parcels_tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/justcodeio/fedex_parcels_tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

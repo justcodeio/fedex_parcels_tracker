@@ -5,7 +5,7 @@ require "active_support/core_ext/hash/indifferent_access"
 
 describe FedexParcelsTracker do
   it "has a version number" do
-    expect(FedexParcelsTracker::VERSION).not_to be '1.0.1'
+    expect(FedexParcelsTracker::VERSION).not_to be '1.0.2'
   end
 end
 
