@@ -1,23 +1,22 @@
 require "spec_helper"
 require 'json'
 require 'pry'
-require "active_support/core_ext/hash/indifferent_access"
 
 describe FedexParcelsTracker do
   it "has a version number" do
-    expect(FedexParcelsTracker::VERSION).not_to be '1.0.2'
+    expect(FedexParcelsTracker::VERSION).not_to be '1.0.3'
   end
 end
 
 describe 'Fedex::Parcel' do
   let(:mock_success) do
     file = File.join('spec', 'responses', 'success.json')
-    JSON.parse(File.read(file)).with_indifferent_access
+    JSON.parse(File.read(file))
   end
 
   let(:mock_fail) do
     file = File.join('spec', 'responses', 'fail.json')
-    JSON.parse(File.read(file)).with_indifferent_access
+    JSON.parse(File.read(file))
   end
 
   let(:tracker) { Fedex::Parcel }
@@ -27,6 +26,7 @@ describe 'Fedex::Parcel' do
       c.access_key = 'Your access key'
       c.method = :pobierz_statusy_przesylki
       c.tracking_in_data = :numerPrzesylki
+      c.ssl_version = :TLSv1_2
       c.data = {
         kodDostepu: @access_key,
         numerPrzesylki: nil,
@@ -38,13 +38,13 @@ describe 'Fedex::Parcel' do
   context 'track' do
     it 'returns json response - success' do
       allow(tracker).to receive_message_chain('track').and_return(mock_success)
-      response = tracker.track.fetch(:statusy_przesylki).first
-      expect(response.fetch(:nr_p)).to eq('1111111111111')
-      expect(response.fetch(:opis)).to eq('Kurier doręczył przesyłkę do odbiorcy.')
+      response = tracker.track.fetch('statusy_przesylki').first
+      expect(response.fetch('nr_p')).to eq('1111111111111')
+      expect(response.fetch('opis')).to eq('Kurier doręczył przesyłkę do odbiorcy.')
     end
     it 'returns json response - fail' do
       allow(tracker).to receive_message_chain('track').and_return(mock_fail)
-      response = tracker.track.fetch(:error)
+      response = tracker.track.fetch('error')
       expect(response).to eq('Tracking code provided no longer found')
     end
 
@@ -58,9 +58,9 @@ describe 'Fedex::Parcel' do
       expect { tracker.track(nil) }.to raise_error(RuntimeError, 'Tracking code cannot be blank')
     end
 
-    it 'raises - no initializer error' do
+    it 'raises - no configuration error' do
       Fedex::Parcel.configuration = nil
-      expect { tracker.track(nil) }.to raise_error(RuntimeError, 'No initializer credentials provided !')
+      expect { tracker.track(nil) }.to raise_error(RuntimeError, 'No configuration credentials provided !')
     end
   end
 end

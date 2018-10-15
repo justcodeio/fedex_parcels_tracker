@@ -15,13 +15,14 @@ module Fedex
     end
 
     class Configuration
-      attr_accessor :access_key, :wsdl, :method, :data, :tracking_in_data
+      attr_accessor :access_key, :wsdl, :method, :data, :tracking_in_data, :ssl_version
 
       def initialize
         @wsdl = nil
         @access_key = nil
         @method = nil
         @tracking_in_data = nil
+        @ssl_version = nil
         @data = {}
       end
     end
@@ -29,12 +30,12 @@ module Fedex
     def initialize
       @client = Savon.client(
         wsdl:        Fedex::Parcel.configuration.wsdl,
-        ssl_version: :TLSv1
+        ssl_version: Fedex::Parcel.configuration.ssl_version
       )
     end
 
     def self.track(tracking_code)
-      raise 'No initializer credentials provided !' if Fedex::Parcel.configuration.blank?
+      raise 'No configuration credentials provided !' if Fedex::Parcel.configuration.blank?
       raise 'Tracking code cannot be blank' if tracking_code.blank?
       raise 'Invalid tracking code provided' unless (12..14).cover? tracking_code.length
 

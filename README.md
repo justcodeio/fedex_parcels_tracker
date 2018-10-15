@@ -27,6 +27,7 @@ Fedex::Parcel.configure do |c|
   c.access_key = 'Your access key'
   c.method = 'the SOAP method to access data You need (as symbol)'
   c.tracking_in_data = 'the hash key value for data objects keys to correspond with the tracking_code placement (as symbol)'
+  c.ssl_version = 'the version of TLS used by server You are connecting to'
   c.data = 'a hash to pass to Savon when calling the client'
 end
 
@@ -37,6 +38,7 @@ Fedex::Parcel.configure do |c|
   c.access_key = 'Your access key'
   c.method = :pobierz_statusy_przesylki
   c.tracking_in_data = :numerPrzesylki
+  c.ssl_version = :TLSv1_2
   c.data = {
     kodDostepu: c.access_key,
     numerPrzesylki: nil,
